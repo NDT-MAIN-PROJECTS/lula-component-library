@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": false,
+    "rootDir": "src",
+    "outDir": "dist/types"
+  },
+  "include": ["src/icons/**/*.ts", "src/icons/**/*.tsx"],
+  "exclude": ["src/icons/**/*.native.ts", "src/icons/**/*.native.tsx", "src/icons/index.native.ts"]
+}

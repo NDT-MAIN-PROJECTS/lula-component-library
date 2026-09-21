@@ -1,0 +1,88 @@
+{
+  "name": "@hubnet-systems/component-library",
+  "version": "0.1.0",
+  "description": "Cross-platform UI primitives shared by Hubnet applications",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "exports": {
+    "./icons": {
+      "types": "./dist/types/icons/index.d.ts",
+      "react-native": "./dist/native/icons/index.mjs",
+      "import": "./dist/web/icons/index.mjs",
+      "require": "./dist/web/icons/index.cjs",
+      "default": "./dist/web/icons/index.mjs"
+    },
+    "./icons/*": {
+      "types": "./dist/types/icons/*.d.ts",
+      "react-native": "./dist/native/icons/*.mjs",
+      "import": "./dist/web/icons/*.mjs",
+      "require": "./dist/web/icons/*.cjs",
+      "default": "./dist/web/icons/*.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "icons": [
+        "dist/types/icons/index.d.ts"
+      ],
+      "icons/*": [
+        "dist/types/icons/*"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run test && npm run clean && npm run build:js && npm run build:types && npm run validate:package",
+    "build:js": "tsup",
+    "build:types": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint --ext .ts,.tsx src tsup.config.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run lint && npm run typecheck",
+    "validate:package": "node scripts/validate-package.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hubnet-systems/component-library.git"
+  },
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "react": ">=19 <20",
+    "react-native": ">=0.80",
+    "react-native-svg": ">=15"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@phosphor-icons/react": "2.1.10",
+    "@types/react": "^19.2.10",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^8.57.1",
+    "phosphor-react-native": "3.0.6",
+    "prettier": "^3.6.2",
+    "react": "^19.2.0",
+    "react-native": "^0.83.6",
+    "react-native-svg": "^15.15.3",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  }
+}
