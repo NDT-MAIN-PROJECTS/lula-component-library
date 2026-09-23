@@ -8,6 +8,7 @@ const iconNames = [
   'Close',
   'HandRaise',
   'HangUp',
+  'Icon',
   'Microphone',
   'MicrophoneOff',
   'Participants',

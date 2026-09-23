@@ -1,5 +1,5 @@
-import { ChatCircleTextIcon } from '@phosphor-icons/react/dist/csr/ChatCircleText';
+import { ChatCircleDotsIcon } from '@phosphor-icons/react/dist/csr/ChatCircleDots';
 
 import { createWebIcon } from './internal/createWebIcon';
 
-export default createWebIcon(ChatCircleTextIcon, 'Chat');
+export default createWebIcon(ChatCircleDotsIcon, 'Chat');

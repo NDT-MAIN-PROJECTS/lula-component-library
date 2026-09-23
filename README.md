@@ -35,6 +35,18 @@ export function MeetingControls() {
 }
 ```
 
+Screens driven by icon-name configuration can use the typed compatibility component:
+
+```tsx
+import { Icon, type IconName } from '@hubnet-systems/component-library/icons';
+
+const icon: IconName = 'search-outline';
+
+export function SearchAction() {
+  return <Icon name={icon} size={20} accessibilityLabel="Search" />;
+}
+```
+
 For the smallest possible import surface, import one icon directly:
 
 ```tsx
@@ -52,11 +64,13 @@ Every icon accepts the same library-owned props:
 - `color?: string`
 - `weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'`
 - `mirrored?: boolean`
+- `style?: unknown` (forwarded to the active platform renderer)
 - `accessibilityLabel?: string`
 - `testID?: string`
 
-Add icons as explicit wrappers rather than exposing vendor icon names. This keeps naming and visual
-meaning stable across applications.
+Prefer explicit semantic wrappers for new reusable controls. Use `Icon` when a screen selects an
+icon by name at runtime. Both APIs expose library-owned names, keeping vendor naming and rendering
+private to this package.
 
 ## Development
 

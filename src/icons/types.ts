@@ -8,6 +8,7 @@ export type IconProps = {
   color?: string;
   weight?: IconWeight;
   mirrored?: boolean;
+  style?: unknown;
   accessibilityLabel?: string;
   testID?: string;
 };
