@@ -15,6 +15,7 @@ export { default as Record } from './Record';
 export { default as ScreenShare } from './ScreenShare';
 export { default as Share } from './Share';
 export { default as Stop } from './Stop';
+export * from './generated';
 export type { IconName } from './catalog';
 export type { IconProps as NamedIconProps } from './Icon';
 export type { IconComponent, IconProps, IconWeight } from './types';

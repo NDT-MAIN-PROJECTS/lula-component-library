@@ -65,6 +65,8 @@ Every icon accepts the same library-owned props:
 - `weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'`
 - `mirrored?: boolean`
 - `style?: unknown` (forwarded to the active platform renderer)
+- `className?: string` (web integrations)
+- `onClick?: () => void` (web integrations)
 - `accessibilityLabel?: string`
 - `testID?: string`
 
@@ -79,6 +81,10 @@ npm ci
 npm test
 npm run build
 ```
+
+`npm run generate:icons` refreshes the web and native wrappers declared in
+`scripts/icon-definitions.mjs`. Generated files are committed so every public icon also has a
+tree-shakeable per-icon package entry.
 
 `npm run build` emits independent web and native bundles, TypeScript declarations, and validates
 the publishable package layout.

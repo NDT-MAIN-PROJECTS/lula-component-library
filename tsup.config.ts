@@ -1,30 +1,12 @@
 import { defineConfig, type Options } from 'tsup';
 
-const iconNames = [
-  'Camera',
-  'CameraOff',
-  'CaretDown',
-  'Chat',
-  'Close',
-  'HandRaise',
-  'HangUp',
-  'Icon',
-  'Microphone',
-  'MicrophoneOff',
-  'Participants',
-  'Person',
-  'Reaction',
-  'Record',
-  'ScreenShare',
-  'Share',
-  'Stop',
-] as const;
+import { allIconNames } from './scripts/icon-definitions.mjs';
 
 function iconEntries(platform: 'web' | 'native'): Record<string, string> {
   const suffix = platform === 'native' ? '.native' : '';
 
   return Object.fromEntries(
-    iconNames.map((iconName) => [`icons/${iconName}`, `src/icons/${iconName}${suffix}.tsx`]),
+    allIconNames.map((iconName) => [`icons/${iconName}`, `src/icons/${iconName}${suffix}.tsx`]),
   );
 }
 

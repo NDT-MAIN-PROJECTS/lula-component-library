@@ -9,6 +9,8 @@ export type IconProps = {
   weight?: IconWeight;
   mirrored?: boolean;
   style?: unknown;
+  className?: string;
+  onClick?: () => void;
   accessibilityLabel?: string;
   testID?: string;
 };

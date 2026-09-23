@@ -15,6 +15,7 @@ export { default as Record } from './Record.native';
 export { default as ScreenShare } from './ScreenShare.native';
 export { default as Share } from './Share.native';
 export { default as Stop } from './Stop.native';
+export * from './generated.native';
 export type { IconName } from './catalog';
 export type { IconProps as NamedIconProps } from './Icon.native';
 export type { IconComponent, IconProps, IconWeight } from './types';

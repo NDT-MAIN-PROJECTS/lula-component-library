@@ -40,11 +40,12 @@
     "build": "npm run test && npm run clean && npm run build:js && npm run build:types && npm run validate:package",
     "build:js": "tsup",
     "build:types": "tsc -p tsconfig.build.json",
+    "generate:icons": "node scripts/generate-icons.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint --ext .ts,.tsx src tsup.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "npm run lint && npm run typecheck",
+    "test": "npm run generate:icons && npm run lint && npm run typecheck",
     "validate:package": "node scripts/validate-package.mjs",
     "prepublishOnly": "npm run build"
   },

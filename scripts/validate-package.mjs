@@ -1,24 +1,6 @@
 import { access, readFile } from 'node:fs/promises';
 
-const iconNames = [
-  'Camera',
-  'CameraOff',
-  'CaretDown',
-  'Chat',
-  'Close',
-  'HandRaise',
-  'HangUp',
-  'Icon',
-  'Microphone',
-  'MicrophoneOff',
-  'Participants',
-  'Person',
-  'Reaction',
-  'Record',
-  'ScreenShare',
-  'Share',
-  'Stop',
-];
+import { allIconNames } from './icon-definitions.mjs';
 
 const expectedFiles = [
   'dist/web/icons/index.mjs',
@@ -26,7 +8,7 @@ const expectedFiles = [
   'dist/native/icons/index.mjs',
   'dist/native/icons/index.cjs',
   'dist/types/icons/index.d.ts',
-  ...iconNames.flatMap((iconName) => [
+  ...allIconNames.flatMap((iconName) => [
     `dist/web/icons/${iconName}.mjs`,
     `dist/web/icons/${iconName}.cjs`,
     `dist/native/icons/${iconName}.mjs`,
