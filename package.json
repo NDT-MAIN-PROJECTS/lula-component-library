@@ -59,17 +59,7 @@
   },
   "license": "UNLICENSED",
   "peerDependencies": {
-    "react": ">=19 <20",
-    "react-native": ">=0.80",
-    "react-native-svg": ">=15"
-  },
-  "peerDependenciesMeta": {
-    "react-native": {
-      "optional": true
-    },
-    "react-native-svg": {
-      "optional": true
-    }
+    "react": ">=19 <20"
   },
   "devDependencies": {
     "@phosphor-icons/react": "2.1.10",
