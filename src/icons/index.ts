@@ -15,6 +15,9 @@ export { default as Record } from './Record';
 export { default as ScreenShare } from './ScreenShare';
 export { default as Share } from './Share';
 export { default as Stop } from './Stop';
+export { default as Couch } from './Couch';
+export { default as Hourglass } from './Hourglass';
+
 export * from './generated';
 export type { IconName } from './catalog';
 export type { IconProps as NamedIconProps } from './Icon';

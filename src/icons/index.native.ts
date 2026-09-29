@@ -15,6 +15,8 @@ export { default as Record } from './Record.native';
 export { default as ScreenShare } from './ScreenShare.native';
 export { default as Share } from './Share.native';
 export { default as Stop } from './Stop.native';
+export { default as Couch } from './Couch.native';
+export { default as Hourglass } from './Hourglass.native'; 
 export * from './generated.native';
 export type { IconName } from './catalog';
 export type { IconProps as NamedIconProps } from './Icon.native';
