@@ -74,6 +74,22 @@ Prefer explicit semantic wrappers for new reusable controls. Use `Icon` when a s
 icon by name at runtime. Both APIs expose library-owned names, keeping vendor naming and rendering
 private to this package.
 
+## Lulafi color tokens
+
+The Lulafi theme export provides semantic light and dark color roles that clients can adapt to
+their UI framework:
+
+```ts
+import { semanticColors } from '@hubnet-systems/component-library/themes/lulafi';
+
+const colors = semanticColors.light;
+const background = colors.surface.screen;
+const primaryText = colors.content.primary;
+```
+
+The token module has no UI framework dependency. Use the same roles when configuring MUI on web or
+React Native styles on mobile, and keep client specific component behavior in each app.
+
 ## Development
 
 ```sh

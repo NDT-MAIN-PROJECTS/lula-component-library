@@ -30,6 +30,7 @@ export default defineConfig([
     ...sharedConfig,
     entry: {
       'icons/index': 'src/icons/index.ts',
+      'themes/lulafi/index': 'src/themes/lulafi/index.ts',
       ...iconEntries('web'),
     },
     external: ['react', 'react/jsx-runtime'],
@@ -41,6 +42,7 @@ export default defineConfig([
     ...sharedConfig,
     entry: {
       'icons/index': 'src/icons/index.native.ts',
+      'themes/lulafi/index': 'src/themes/lulafi/index.ts',
       ...iconEntries('native'),
     },
     external: ['react', 'react/jsx-runtime', 'react-native', 'react-native-svg'],
