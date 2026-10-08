@@ -5,6 +5,7 @@ import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight';
 import { ArrowSquareOutIcon } from '@phosphor-icons/react/dist/csr/ArrowSquareOut';
 import { ArrowsClockwiseIcon } from '@phosphor-icons/react/dist/csr/ArrowsClockwise';
 import { ArrowsOutIcon } from '@phosphor-icons/react/dist/csr/ArrowsOut';
+import { BluetoothIcon } from '@phosphor-icons/react/dist/csr/Bluetooth';
 import { BriefcaseIcon } from '@phosphor-icons/react/dist/csr/Briefcase';
 import { BuildingsIcon } from '@phosphor-icons/react/dist/csr/Buildings';
 import { CalendarIcon } from '@phosphor-icons/react/dist/csr/Calendar';
@@ -52,6 +53,7 @@ import { GearIcon } from '@phosphor-icons/react/dist/csr/Gear';
 import { GlobeHemisphereWestIcon } from '@phosphor-icons/react/dist/csr/GlobeHemisphereWest';
 import { GridFourIcon } from '@phosphor-icons/react/dist/csr/GridFour';
 import { HandIcon } from '@phosphor-icons/react/dist/csr/Hand';
+import { HeadphonesIcon } from '@phosphor-icons/react/dist/csr/Headphones';
 import { HourglassIcon } from '@phosphor-icons/react/dist/csr/Hourglass';
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House';
 import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
@@ -92,6 +94,7 @@ import { SignOutIcon } from '@phosphor-icons/react/dist/csr/SignOut';
 import { SlidersHorizontalIcon } from '@phosphor-icons/react/dist/csr/SlidersHorizontal';
 import { SmileyIcon } from '@phosphor-icons/react/dist/csr/Smiley';
 import { SparkleIcon } from '@phosphor-icons/react/dist/csr/Sparkle';
+import { SpeakerHighIcon } from '@phosphor-icons/react/dist/csr/SpeakerHigh';
 import { SquareIcon } from '@phosphor-icons/react/dist/csr/Square';
 import { StarIcon } from '@phosphor-icons/react/dist/csr/Star';
 import { StorefrontIcon } from '@phosphor-icons/react/dist/csr/Storefront';
@@ -122,6 +125,7 @@ export const phosphorIcons = {
   ArrowSquareOut: ArrowSquareOutIcon,
   ArrowsClockwise: ArrowsClockwiseIcon,
   ArrowsOut: ArrowsOutIcon,
+  Bluetooth: BluetoothIcon,
   Briefcase: BriefcaseIcon,
   Buildings: BuildingsIcon,
   Calendar: CalendarIcon,
@@ -169,6 +173,7 @@ export const phosphorIcons = {
   GlobeHemisphereWest: GlobeHemisphereWestIcon,
   GridFour: GridFourIcon,
   Hand: HandIcon,
+  Headphones: HeadphonesIcon,
   Hourglass: HourglassIcon,
   House: HouseIcon,
   Image: ImageIcon,
@@ -209,6 +214,7 @@ export const phosphorIcons = {
   SlidersHorizontal: SlidersHorizontalIcon,
   Smiley: SmileyIcon,
   Sparkle: SparkleIcon,
+  SpeakerHigh: SpeakerHighIcon,
   Square: SquareIcon,
   Star: StarIcon,
   Storefront: StorefrontIcon,
