@@ -38,11 +38,11 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run test && npm run clean && npm run build:js && npm run build:types && npm run validate:package",
-    "build:js": "tsup",
+    "build:js": "tsdown",
     "build:types": "tsc -p tsconfig.build.json",
     "generate:icons": "node scripts/generate-icons.mjs",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint --ext .ts,.tsx src tsup.config.ts",
+    "lint": "eslint --ext .ts,.tsx src tsdown.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "npm run generate:icons && npm run lint && npm run typecheck",
@@ -73,7 +73,7 @@
     "react-native": "^0.83.6",
     "react-native-svg": "^15.15.3",
     "rimraf": "^6.0.1",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.23.1",
     "typescript": "^5.9.2"
   }
 }
