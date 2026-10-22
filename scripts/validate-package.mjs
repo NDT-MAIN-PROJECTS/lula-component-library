@@ -1,4 +1,6 @@
 import { access, readFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
 
 import { allIconNames } from './icon-definitions.mjs';
 
@@ -8,6 +10,11 @@ const expectedFiles = [
   'dist/native/icons/index.mjs',
   'dist/native/icons/index.cjs',
   'dist/types/icons/index.d.ts',
+  'dist/web/themes/lulafi.mjs',
+  'dist/web/themes/lulafi.cjs',
+  'dist/native/themes/lulafi.mjs',
+  'dist/native/themes/lulafi.cjs',
+  'dist/types/themes/lulafi.d.ts',
   ...allIconNames.flatMap((iconName) => [
     `dist/web/icons/${iconName}.mjs`,
     `dist/web/icons/${iconName}.cjs`,
@@ -29,5 +36,15 @@ if (nativePerson.includes('@phosphor-icons/react')) {
 if (webPerson.includes('phosphor-react-native')) {
   throw new Error('The web build contains a React Native Phosphor import.');
 }
+
+const webTheme = await import('../dist/web/themes/lulafi.mjs');
+const nativeTheme = await import('../dist/native/themes/lulafi.mjs');
+const require = createRequire(import.meta.url);
+const commonJsTheme = require('@hubnet-systems/component-library/themes/lulafi');
+
+assert.deepEqual(nativeTheme.semanticColors, webTheme.semanticColors);
+assert.deepEqual(commonJsTheme.semanticColors, webTheme.semanticColors);
+assert.equal(webTheme.semanticColors.light.surface.screen, '#f1f5f9');
+assert.equal(webTheme.semanticColors.dark.surface.screen, '#0b1220');
 
 console.log(`Validated ${expectedFiles.length} package files.`);

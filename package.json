@@ -23,6 +23,13 @@
       "require": "./dist/web/icons/*.cjs",
       "default": "./dist/web/icons/*.mjs"
     },
+    "./themes/lulafi": {
+      "types": "./dist/types/themes/lulafi.d.ts",
+      "react-native": "./dist/native/themes/lulafi.mjs",
+      "import": "./dist/web/themes/lulafi.mjs",
+      "require": "./dist/web/themes/lulafi.cjs",
+      "default": "./dist/web/themes/lulafi.mjs"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
@@ -32,6 +39,9 @@
       ],
       "icons/*": [
         "dist/types/icons/*"
+      ],
+      "themes/lulafi": [
+        "dist/types/themes/lulafi.d.ts"
       ]
     }
   },
