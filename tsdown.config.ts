@@ -1,4 +1,4 @@
-import { defineConfig, type Options } from 'tsup';
+import { defineConfig, type UserConfig } from 'tsdown';
 
 import { allIconNames } from './scripts/icon-definitions.mjs';
 
@@ -10,17 +10,14 @@ function iconEntries(platform: 'web' | 'native'): Record<string, string> {
   );
 }
 
-const sharedConfig: Options = {
-  bundle: true,
+const sharedConfig: UserConfig = {
+  cjsDefault: false,
   clean: false,
   dts: false,
+  fixedExtension: true,
   format: ['esm', 'cjs'],
   minify: false,
-  outExtension({ format }) {
-    return { js: format === 'esm' ? '.mjs' : '.cjs' };
-  },
   sourcemap: false,
-  splitting: false,
   target: 'es2020',
   treeshake: true,
 };
@@ -32,8 +29,11 @@ export default defineConfig([
       'icons/index': 'src/icons/index.ts',
       ...iconEntries('web'),
     },
-    external: ['react', 'react/jsx-runtime'],
-    noExternal: ['@phosphor-icons/react'],
+    deps: {
+      neverBundle: ['react', 'react/jsx-runtime'],
+      alwaysBundle: ['@phosphor-icons/react'],
+      onlyBundle: ['@phosphor-icons/react'],
+    },
     outDir: 'dist/web',
     platform: 'browser',
   },
@@ -43,8 +43,11 @@ export default defineConfig([
       'icons/index': 'src/icons/index.native.ts',
       ...iconEntries('native'),
     },
-    external: ['react', 'react/jsx-runtime', 'react-native', 'react-native-svg'],
-    noExternal: ['phosphor-react-native'],
+    deps: {
+      neverBundle: ['react', 'react/jsx-runtime', 'react-native', 'react-native-svg'],
+      alwaysBundle: ['phosphor-react-native'],
+      onlyBundle: ['phosphor-react-native'],
+    },
     outDir: 'dist/native',
     platform: 'neutral',
   },
