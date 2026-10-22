@@ -1,7 +1,7 @@
 # Component Library
 
-Standalone cross-platform UI primitives for Hubnet applications. The first package surface is a
-shared icon catalogue backed by Phosphor on web and React Native.
+Standalone cross-platform UI primitives for Hubnet applications. The package includes a shared
+icon catalogue backed by Phosphor on web and React Native, plus Lulafi colour tokens.
 
 The public API is owned by this package. Applications do not import Phosphor directly, so the
 underlying icon implementation can be changed without changing application imports.
@@ -14,8 +14,8 @@ Configure GitHub Packages for the `@hubnet-systems` scope, then install the pack
 npm install @hubnet-systems/component-library
 ```
 
-React applications must provide React 19. React Native applications must also provide React Native
-and `react-native-svg`.
+React applications must provide React 18 or 19. React Native applications must also provide React
+Native and `react-native-svg`.
 
 ## Use
 
@@ -55,6 +55,25 @@ import Person from '@hubnet-systems/component-library/icons/Person';
 
 React Native bundlers select the native implementation through the package's `react-native` export
 condition. Web bundlers receive the web implementation.
+
+## Lulafi colours
+
+The Lulafi scheme has matching light and dark semantic roles for web and React Native:
+
+```ts
+import { semanticColors, type ColorRoles } from '@hubnet-systems/component-library/themes/lulafi';
+
+const colors: ColorRoles = semanticColors.light;
+const buttonBackground = colors.surface.interactiveStrong;
+const buttonText = colors.content.onInteractive;
+```
+
+Choose the `light` or `dark` scheme in the application. The package provides values and types; each
+application owns its appearance setting and theme hook. Use `surface`, `content`, `stroke`, `status`,
+`brand`, `chat`, `identity`, and `shadow` roles for UI. `palette` is for fixed brand artwork, while
+`mediaChrome` is for controls over photos and video. `PARTICLE_COLORS` and `DOT_COLORS_LIST` support
+the existing Lulafi splash artwork. Native build configuration can use the CommonJS export to read
+the same screen backgrounds as the runtime theme.
 
 ## Icon contract
 

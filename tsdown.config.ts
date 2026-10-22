@@ -27,6 +27,7 @@ export default defineConfig([
     ...sharedConfig,
     entry: {
       'icons/index': 'src/icons/index.ts',
+      'themes/lulafi': 'src/themes/lulafi.ts',
       ...iconEntries('web'),
     },
     deps: {
@@ -41,6 +42,7 @@ export default defineConfig([
     ...sharedConfig,
     entry: {
       'icons/index': 'src/icons/index.native.ts',
+      'themes/lulafi': 'src/themes/lulafi.ts',
       ...iconEntries('native'),
     },
     deps: {
