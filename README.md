@@ -14,8 +14,8 @@ Configure GitHub Packages for the `@hubnet-systems` scope, then install the pack
 npm install @hubnet-systems/component-library
 ```
 
-React applications must provide React 19. React Native applications must also provide React Native
-and `react-native-svg`.
+React applications must provide React 18 or 19. React Native applications must also provide React
+Native and `react-native-svg`.
 
 ## Use
 
