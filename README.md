@@ -110,9 +110,9 @@ the publishable package layout.
 
 ## Publishing
 
-Pull requests run tests and package validation. A merge to `main` increments the patch version,
-publishes to GitHub Packages, tags the release, and pushes the version commit. The repository needs
-the same organization publishing secrets used by other Hubnet npm packages:
-
-- `PUBLISHER_GITHUB_PERSONAL_ACCESS_TOKEN`
-- `PUBLISH_GITHUB_PACKAGES_TOKEN`
+Pull requests run tests and package validation. To release changes, bump the version in
+`package.json` and `package-lock.json` in the pull request (for example,
+`npm version patch --no-git-tag-version`). Merging that pull request to `main` validates the
+committed version, tags it, and publishes it to GitHub Packages. Code-only merges do not publish
+until a version bump is merged. The workflow uses `GITHUB_TOKEN` to push the tag and needs
+`PUBLISH_GITHUB_PACKAGES_TOKEN` to read and publish the package.

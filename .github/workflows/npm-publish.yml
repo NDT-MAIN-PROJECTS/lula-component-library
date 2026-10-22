@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - package.json
+      - package-lock.json
   workflow_dispatch:
 
 permissions:
@@ -16,19 +19,18 @@ concurrency:
 
 jobs:
   publish:
-    if: ${{ !contains(github.event.head_commit.message || '', '[skip ci]') }}
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          token: ${{ secrets.PUBLISHER_GITHUB_PERSONAL_ACCESS_TOKEN }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
@@ -38,27 +40,61 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Increment patch version
-        run: npm version patch --no-git-tag-version
+      - name: Check release state
+        id: release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGES_TOKEN }}
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          PACKAGE="$(node -p "require('./package.json').name")"
+          TAG="v${VERSION}"
+
+          if git show-ref --verify --quiet "refs/tags/${TAG}"; then
+            TAG_COMMIT="$(git rev-list -n 1 "${TAG}")"
+            if [ "${TAG_COMMIT}" != "${GITHUB_SHA}" ]; then
+              echo "::notice::${TAG} belongs to an earlier commit. Bump the package version in a pull request to release new changes."
+              echo "publish=false" >> "${GITHUB_OUTPUT}"
+              exit 0
+            fi
+          fi
+
+          if PACKAGE_VIEW="$(npm view "${PACKAGE}@${VERSION}" version --registry=https://npm.pkg.github.com 2>&1)"; then
+            if git show-ref --verify --quiet "refs/tags/${TAG}"; then
+              echo "::notice::${PACKAGE}@${VERSION} is already published and tagged."
+              echo "publish=false" >> "${GITHUB_OUTPUT}"
+              exit 0
+            fi
+            echo "::error::${PACKAGE}@${VERSION} is already published without a tag. Bump the package version in a pull request."
+            exit 1
+          elif [[ "${PACKAGE_VIEW}" != *E404* ]]; then
+            echo "${PACKAGE_VIEW}"
+            exit 1
+          fi
+
+          echo "publish=true" >> "${GITHUB_OUTPUT}"
 
       - name: Validate package
+        if: steps.release.outputs.publish == 'true'
         run: npm run build
 
       - name: Inspect publish contents
+        if: steps.release.outputs.publish == 'true'
         run: npm pack --dry-run
 
+      - name: Tag release
+        if: steps.release.outputs.publish == 'true'
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          TAG="v${VERSION}"
+          if ! git show-ref --verify --quiet "refs/tags/${TAG}"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git tag -a "${TAG}" -m "Release ${TAG}"
+            git push origin "${TAG}"
+          fi
+
       - name: Publish to GitHub Packages
+        if: steps.release.outputs.publish == 'true'
         run: npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_GITHUB_PACKAGES_TOKEN }}
-
-      - name: Commit and tag release
-        run: |
-          VERSION="$(node -p "require('./package.json').version")"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json
-          git commit -m "chore: release v${VERSION} [skip ci]"
-          git tag "v${VERSION}"
-          git push origin HEAD:main
-          git push origin "v${VERSION}"
