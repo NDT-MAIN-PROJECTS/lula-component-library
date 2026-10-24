@@ -28,6 +28,8 @@ export default defineConfig([
     entry: {
       'icons/index': 'src/icons/index.ts',
       'themes/lulafi': 'src/themes/lulafi.ts',
+      'dashboard/index': 'src/dashboard/index.ts',
+      style: 'src/dashboard/dashboard.css',
       ...iconEntries('web'),
     },
     deps: {
@@ -36,6 +38,7 @@ export default defineConfig([
       onlyBundle: ['@phosphor-icons/react'],
     },
     outDir: 'dist/web',
+    copy: [{ from: 'src/dashboard/css.d.ts', to: 'dist/types/dashboard' }],
     platform: 'browser',
   },
   {

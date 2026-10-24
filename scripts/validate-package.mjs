@@ -15,6 +15,11 @@ const expectedFiles = [
   'dist/native/themes/lulafi.mjs',
   'dist/native/themes/lulafi.cjs',
   'dist/types/themes/lulafi.d.ts',
+  'dist/web/dashboard/index.mjs',
+  'dist/web/dashboard/index.cjs',
+  'dist/web/style.css',
+  'dist/types/dashboard/index.d.ts',
+  'dist/types/dashboard/css.d.ts',
   ...allIconNames.flatMap((iconName) => [
     `dist/web/icons/${iconName}.mjs`,
     `dist/web/icons/${iconName}.cjs`,

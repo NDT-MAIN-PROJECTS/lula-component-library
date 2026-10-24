@@ -75,6 +75,29 @@ application owns its appearance setting and theme hook. Use `surface`, `content`
 the existing Lulafi splash artwork. Native build configuration can use the CommonJS export to read
 the same screen backgrounds as the runtime theme.
 
+## Dashboard components
+
+Web applications can use the dashboard cards and signup chart from the library. The `mode` prop
+uses the same light or dark semantic colors as the theme package. Import the stylesheet once at the
+application entry point and pass a `renderLink` adapter when the host application needs client-side
+routing:
+
+```tsx
+import '@hubnet-systems/component-library/dashboard.css';
+import {
+  DashboardBreakdownCard,
+  DashboardStatCard,
+} from '@hubnet-systems/component-library/dashboard';
+
+<DashboardStatCard title="Total users" value={1240} mode="light" />
+<DashboardBreakdownCard
+  title="Users by type"
+  rows={[{ label: 'App users', count: 840 }]}
+  emptyText="No users yet."
+  mode="light"
+/>
+```
+
 ## Icon contract
 
 Every icon accepts the same library-owned props:
