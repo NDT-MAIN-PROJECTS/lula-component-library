@@ -3,7 +3,9 @@
   "version": "0.1.10",
   "description": "Cross-platform UI primitives shared by Hubnet applications",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/web/style.css"
+  ],
   "files": [
     "dist",
     "THIRD_PARTY_NOTICES.md"
@@ -30,6 +32,16 @@
       "require": "./dist/web/themes/lulafi.cjs",
       "default": "./dist/web/themes/lulafi.mjs"
     },
+    "./dashboard": {
+      "types": "./dist/types/dashboard/index.d.ts",
+      "import": "./dist/web/dashboard/index.mjs",
+      "require": "./dist/web/dashboard/index.cjs",
+      "default": "./dist/web/dashboard/index.mjs"
+    },
+    "./dashboard.css": {
+      "types": "./dist/types/dashboard/css.d.ts",
+      "default": "./dist/web/style.css"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
@@ -42,6 +54,12 @@
       ],
       "themes/lulafi": [
         "dist/types/themes/lulafi.d.ts"
+      ],
+      "dashboard": [
+        "dist/types/dashboard/index.d.ts"
+      ],
+      "dashboard.css": [
+        "dist/types/dashboard/css.d.ts"
       ]
     }
   },
@@ -73,6 +91,7 @@
   },
   "devDependencies": {
     "@phosphor-icons/react": "2.1.10",
+    "@tsdown/css": "0.23.1",
     "@types/react": "^19.2.10",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",

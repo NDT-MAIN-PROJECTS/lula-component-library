@@ -8,6 +8,13 @@
     "rootDir": "src",
     "outDir": "dist/types"
   },
-  "include": ["src/icons/**/*.ts", "src/icons/**/*.tsx", "src/themes/**/*.ts"],
+  "include": [
+    "src/icons/**/*.ts",
+    "src/icons/**/*.tsx",
+    "src/themes/**/*.ts",
+    "src/dashboard/**/*.ts",
+    "src/dashboard/**/*.tsx",
+    "src/dashboard/**/*.d.ts"
+  ],
   "exclude": ["src/icons/**/*.native.ts", "src/icons/**/*.native.tsx", "src/icons/index.native.ts"]
 }
