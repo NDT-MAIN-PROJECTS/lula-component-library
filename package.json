@@ -1,7 +1,8 @@
 {
   "name": "@hubnet-systems/component-library",
   "version": "0.1.11",
-  "description": "Cross-platform UI primitives shared by Hubnet applications",
+  "private": true,
+  "description": "Cross-platform UI primitives for web and React Native",
   "type": "module",
   "sideEffects": [
     "./dist/web/style.css"
@@ -65,7 +66,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run test && npm run clean && npm run build:js && npm run build:types && npm run validate:package",
+    "compile": "npm run test && npm run clean && npm run build:js && npm run build:types && npm run validate:package",
     "build:js": "tsdown",
     "build:types": "tsc -p tsconfig.build.json",
     "generate:icons": "node scripts/generate-icons.mjs",
@@ -74,12 +75,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "npm run generate:icons && npm run lint && npm run typecheck",
-    "validate:package": "node scripts/validate-package.mjs",
-    "prepublishOnly": "npm run build"
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com"
+    "validate:package": "node scripts/validate-package.mjs"
   },
   "repository": {
     "type": "git",

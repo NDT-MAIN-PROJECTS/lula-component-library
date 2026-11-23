@@ -1,5 +1,5 @@
 node_modules/
-dist/
+.npmrc*
 coverage/
 .nyc_output/
 .cache/

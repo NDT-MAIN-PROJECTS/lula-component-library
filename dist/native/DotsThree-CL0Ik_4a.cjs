@@ -1,0 +1,33 @@
+const require_icon_base = require("./icon-base-DgTAot9z.cjs");
+let react_native_svg = require("react-native-svg");
+let react_jsx_runtime = require("react/jsx-runtime");
+
+//#region node_modules/phosphor-react-native/lib/module/defs/DotsThree.js
+var DotsThree_default = /* @__PURE__ */ new Map([
+	["bold", /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, { d: "M144 128a16 16 0 1 1-16-16 16 16 0 0 1 16 16m-84-16a16 16 0 1 0 16 16 16 16 0 0 0-16-16m136 0a16 16 0 1 0 16 16 16 16 0 0 0-16-16" }) })],
+	["duotone", ({ duotoneColor, duotoneOpacity }) => /*#__PURE__*/ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, {
+		d: "M240 96v64a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16V96a16 16 0 0 1 16-16h192a16 16 0 0 1 16 16",
+		opacity: duotoneOpacity,
+		fill: duotoneColor
+	}), /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, { d: "M140 128a12 12 0 1 1-12-12 12 12 0 0 1 12 12m56-12a12 12 0 1 0 12 12 12 12 0 0 0-12-12m-136 0a12 12 0 1 0 12 12 12 12 0 0 0-12-12" })] })],
+	["fill", /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, { d: "M224 80H32a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16M60 140a12 12 0 1 1 12-12 12 12 0 0 1-12 12m68 0a12 12 0 1 1 12-12 12 12 0 0 1-12 12m68 0a12 12 0 1 1 12-12 12 12 0 0 1-12 12" }) })],
+	["light", /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, { d: "M138 128a10 10 0 1 1-10-10 10 10 0 0 1 10 10m-78-10a10 10 0 1 0 10 10 10 10 0 0 0-10-10m136 0a10 10 0 1 0 10 10 10 10 0 0 0-10-10" }) })],
+	["regular", /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, { d: "M140 128a12 12 0 1 1-12-12 12 12 0 0 1 12 12m56-12a12 12 0 1 0 12 12 12 12 0 0 0-12-12m-136 0a12 12 0 1 0 12 12 12 12 0 0 0-12-12" }) })],
+	["thin", /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: /*#__PURE__*/ (0, react_jsx_runtime.jsx)(react_native_svg.Path, { d: "M136 128a8 8 0 1 1-8-8 8 8 0 0 1 8 8m-76-8a8 8 0 1 0 8 8 8 8 0 0 0-8-8m136 0a8 8 0 1 0 8 8 8 8 0 0 0-8-8" }) })]
+]);
+
+//#endregion
+//#region node_modules/phosphor-react-native/lib/module/icons/DotsThree.js
+const I = ({ ...props }) => /*#__PURE__*/ (0, react_jsx_runtime.jsx)(require_icon_base.icon_base_default, {
+	...props,
+	weights: DotsThree_default,
+	name: "dots-three"
+});
+
+//#endregion
+Object.defineProperty(exports, "I", {
+  enumerable: true,
+  get: function () {
+    return I;
+  }
+});

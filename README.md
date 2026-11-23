@@ -1,17 +1,14 @@
 # Component Library
 
-Standalone cross-platform UI primitives for Hubnet applications. The package includes a shared
-icon catalogue backed by Phosphor on web and React Native, plus Lulafi colour tokens.
+Cross-platform UI primitives for web and React Native, with a shared icon catalogue and theme colors.
 
 The public API is owned by this package. Applications do not import Phosphor directly, so the
 underlying icon implementation can be changed without changing application imports.
 
 ## Install
 
-Configure GitHub Packages for the `@hubnet-systems` scope, then install the package:
-
 ```sh
-npm install @hubnet-systems/component-library
+npm install "git+https://github.com/hubnet-systems/component-library.git#main"
 ```
 
 React applications must provide React 18 or 19. React Native applications must also provide React
@@ -120,22 +117,11 @@ private to this package.
 
 ```sh
 npm ci
-npm test
-npm run build
+npm run compile
 ```
 
 `npm run generate:icons` refreshes the web and native wrappers declared in
 `scripts/icon-definitions.mjs`. Generated files are committed so every public icon also has a
 tree-shakeable per-icon package entry.
 
-`npm run build` emits independent web and native bundles, TypeScript declarations, and validates
-the publishable package layout.
-
-## Publishing
-
-Pull requests run tests and package validation. To release changes, bump the version in
-`package.json` and `package-lock.json` in the pull request (for example,
-`npm version patch --no-git-tag-version`). Merging that pull request to `main` validates the
-committed version, tags it, and publishes it to GitHub Packages. Code-only merges do not publish
-until a version bump is merged. The workflow uses `GITHUB_TOKEN` to push the tag and needs
-`PUBLISH_GITHUB_PACKAGES_TOKEN` to read and publish the package.
+`npm run compile` emits web and native bundles and TypeScript declarations, then validates the package.
