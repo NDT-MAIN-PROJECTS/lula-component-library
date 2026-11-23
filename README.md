@@ -1,0 +1,127 @@
+# Component Library
+
+Cross-platform UI primitives for web and React Native, with a shared icon catalogue and theme colors.
+
+The public API is owned by this package. Applications do not import Phosphor directly, so the
+underlying icon implementation can be changed without changing application imports.
+
+## Install
+
+```sh
+npm install "git+https://github.com/NDT-MAIN-PROJECTS/lula-component-library.git#main"
+```
+
+React applications must provide React 18 or 19. React Native applications must also provide React
+Native and `react-native-svg`.
+
+## Use
+
+Import from the catalogue:
+
+```tsx
+import { Camera, MicrophoneOff, Person } from '@hubnet-systems/component-library/icons';
+
+export function MeetingControls() {
+  return (
+    <>
+      <Camera size={24} accessibilityLabel="Turn on camera" />
+      <MicrophoneOff size={24} weight="fill" color="#ef4444" />
+      <Person size={24} />
+    </>
+  );
+}
+```
+
+Screens driven by icon-name configuration can use the typed compatibility component:
+
+```tsx
+import { Icon, type IconName } from '@hubnet-systems/component-library/icons';
+
+const icon: IconName = 'search-outline';
+
+export function SearchAction() {
+  return <Icon name={icon} size={20} accessibilityLabel="Search" />;
+}
+```
+
+For the smallest possible import surface, import one icon directly:
+
+```tsx
+import Person from '@hubnet-systems/component-library/icons/Person';
+```
+
+React Native bundlers select the native implementation through the package's `react-native` export
+condition. Web bundlers receive the web implementation.
+
+## Lulafi colours
+
+The Lulafi scheme has matching light and dark semantic roles for web and React Native:
+
+```ts
+import { semanticColors, type ColorRoles } from '@hubnet-systems/component-library/themes/lulafi';
+
+const colors: ColorRoles = semanticColors.light;
+const buttonBackground = colors.surface.interactiveStrong;
+const buttonText = colors.content.onInteractive;
+```
+
+Choose the `light` or `dark` scheme in the application. The package provides values and types; each
+application owns its appearance setting and theme hook. Use `surface`, `content`, `stroke`, `status`,
+`brand`, `chat`, `identity`, and `shadow` roles for UI. `palette` is for fixed brand artwork, while
+`mediaChrome` is for controls over photos and video. `PARTICLE_COLORS` and `DOT_COLORS_LIST` support
+the existing Lulafi splash artwork. Native build configuration can use the CommonJS export to read
+the same screen backgrounds as the runtime theme.
+
+## Dashboard components
+
+Web applications can use the dashboard cards and signup chart from the library. The `mode` prop
+uses the same light or dark semantic colors as the theme package. Import the stylesheet once at the
+application entry point and pass a `renderLink` adapter when the host application needs client-side
+routing:
+
+```tsx
+import '@hubnet-systems/component-library/dashboard.css';
+import {
+  DashboardBreakdownCard,
+  DashboardStatCard,
+} from '@hubnet-systems/component-library/dashboard';
+
+<DashboardStatCard title="Total users" value={1240} mode="light" />
+<DashboardBreakdownCard
+  title="Users by type"
+  rows={[{ label: 'App users', count: 840 }]}
+  emptyText="No users yet."
+  mode="light"
+/>
+```
+
+## Icon contract
+
+Every icon accepts the same library-owned props:
+
+- `size?: number`
+- `color?: string`
+- `weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'`
+- `mirrored?: boolean`
+- `style?: unknown` (forwarded to the active platform renderer)
+- `className?: string` (web integrations)
+- `onClick?: () => void` (web integrations)
+- `accessibilityLabel?: string`
+- `testID?: string`
+
+Prefer explicit semantic wrappers for new reusable controls. Use `Icon` when a screen selects an
+icon by name at runtime. Both APIs expose library-owned names, keeping vendor naming and rendering
+private to this package.
+
+## Development
+
+```sh
+npm ci
+npm run compile
+```
+
+`npm run generate:icons` refreshes the web and native wrappers declared in
+`scripts/icon-definitions.mjs`. Generated files are committed so every public icon also has a
+tree-shakeable per-icon package entry.
+
+`npm run compile` emits web and native bundles and TypeScript declarations, then validates the package.
